@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de Senhas</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    
     <div class="container">
-      <h2>Gerador de Senha</h2>
+        <header>
+            <h2>Gerador de Senha</h2>
+            <p>Crie senhas fortes e seguras instantaneamente</p>
+        </header>
 
-      <div class="result-container">
-        <span id="password">Sua senha aparecerá aqui</span>
-        <button id="copyBtn" onclick="copyPassword()" title="Copiar senha">📋</button>
-      </div>
+        <div class="result-box">
+            <span id="password">Sua senha aparecerá aqui</span>
+            <button id="copyBtn" onclick="copyPassword()" title="Copiar senha">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
 
-      <div class="input-group">
-        <label for="length">Comprimento da senha: <span id="lengthValue">12</span></label>
-        <input type="range" id="length" min="6" max="30" value="12" oninput="updateLengthDisplay()" />
-      </div>
+        <div class="controls">
+            <div class="range-group">
+                <div class="range-label">
+                    <span>Comprimento</span>
+                    <strong id="lengthValue">12</strong>
+                </div>
+                <input type="range" id="length" min="6" max="32" value="12" oninput="updateLengthDisplay()">
+            </div>
 
-      <div class="checkbox-group">
-        <label class="checkbox-label">
-          <input type="checkbox" id="includeNumbers" checked /> Incluir números
-        </label>
-        <label class="checkbox-label">
-          <input type="checkbox" id="includeSymbols" checked /> Incluir símbolos
-        </label>
-      </div>
+            <div class="checkbox-group">
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" id="includeNumbers" checked>
+                    <span class="checkmark"></span>
+                    Incluir números
+                </label>
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" id="includeSymbols" checked>
+                    <span class="checkmark"></span>
+                    Incluir símbolos
+                </label>
+            </div>
+        </div>
 
-      <button class="generate-btn" onclick="generate()">Gerar Senha</button>
+        <button class="generate-btn" onclick="generate()">Gerar Senha</button>
     </div>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
