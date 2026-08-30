@@ -3,31 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gerador de senhas</title>
+    <title>Gerador de Senhas</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <h2>Gerador de Senha</h2>
-      <label for="length">Comprimento da senha:</label>
-      <input
-        type="number"
-        id="length"
-        name="length"
-        min="1"
-        max="30"
-        value="10"
-      />
-      <br />
-      <label for="includeNumbers">Incluir números:</label>
-      <input type="checkbox" id="includeNumbers" name="includeNumbers" />
-      <br />
-      <label for="includeSymbols">Incluir símbolos:</label>
-      <input type="checkbox" id="includeSymbols" name="includeSymbols" />
-      <br />
-      <button onclick="generate()">Gerar Senha</button>
-      <p id="password"></p>
+
+      <div class="result-container">
+        <span id="password">Sua senha aparecerá aqui</span>
+        <button id="copyBtn" onclick="copyPassword()" title="Copiar senha">📋</button>
+      </div>
+
+      <div class="input-group">
+        <label for="length">Comprimento da senha: <span id="lengthValue">12</span></label>
+        <input type="range" id="length" min="6" max="30" value="12" oninput="updateLengthDisplay()" />
+      </div>
+
+      <div class="checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="includeNumbers" checked /> Incluir números
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="includeSymbols" checked /> Incluir símbolos
+        </label>
+      </div>
+
+      <button class="generate-btn" onclick="generate()">Gerar Senha</button>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,21 +1,19 @@
 function generate() {
-    var length = document.getElementById('length').value;
-    var includeNumbers = document.getElementById('includeNumbers').checked;
-    var includeSymbols = document.getElementById('includeSymbols').checked;
+    const length = parseInt(document.getElementById('length').value, 10) || 12;
+    const includeNumbers = document.getElementById('includeNumbers').checked;
+    const includeSymbols = document.getElementById('includeSymbols').checked;
 
-    var password = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    if (includeNumbers) characters += '0123456789';
+    if (includeSymbols) characters += '!@#$%^&*()_+~`|}{[]\\:;?><,./-=';
 
-    if (includeNumbers) {
-        characters += '0123456789';
-    }
+    const randomValues = new Uint32Array(length);
+    window.crypto.getRandomValues(randomValues);
 
-    if (includeSymbols) {
-        characters += '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
-    }
-
-    for (var i = 0; i < length; i++) {
-        password += characters.charAt(Math.floor(Math.random() * characters.length));
+    let password = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = randomValues[i] % characters.length;
+        password += characters[randomIndex];
     }
 
     document.getElementById('password').innerText = password;
